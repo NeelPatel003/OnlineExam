@@ -4,10 +4,10 @@
   "description": "A Live Test Taking System developed using MEAN Stack.",
   "main": "index.js",
   "scripts": {
-    "start":"nodemon app.js -e .html,.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Rahul Jhawar",
+  "author": "neel",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -16,7 +16,7 @@
     "express-session": "^1.15.6",
     "express-sessions": "^1.0.6",
     "jsonwebtoken": "^8.1.0",
-    "mongoose": "^4.13.9",
+    "mongoose": "^4.13.21",
     "nodemailer": "^4.4.1",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
