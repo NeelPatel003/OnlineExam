@@ -22,7 +22,8 @@
     "passport-facebook": "^2.1.1",
     "passport-google-oauth2": "^0.1.6",
     "random-number": "0.0.9",
-    "randomstring": "^1.1.5"
+    "randomstring": "^1.1.5",
+    "serve-favicon": "^2.5.0"
   },
   "engines": {
     "node": "14.15.3"
