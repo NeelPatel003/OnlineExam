@@ -2,7 +2,7 @@
   "name": "ExamGround",
   "version": "1.0.0",
   "description": "A Live Test Taking System developed using MEAN Stack.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app",
     "test": "echo \"Error: no test specified\" && exit 1"
