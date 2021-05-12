@@ -11,7 +11,7 @@ const fs = require("fs");
 const config = require("./config/config.js");
 //const PORT = process.env.PORT || 5000;
 
-app.set("port", process.env.PORT || 3000);
+//app.set("port", process.env.PORT || 3000);
 /*app.use(cors({
   'allowedHeaders': ['sessionId', 'Content-Type'],
   'exposedHeaders': ['sessionId'],
@@ -114,8 +114,10 @@ app.use(function (err, req, res, next) {
   });
 });
 
-//express().listen(PORT, () => console.log(`Listening on ${PORT}`));
-const server = http.createServer(app);
-server.listen(app.get("port"), (req, res) => {
-  console.log("App listening to port" + app.get("port"));
-});
+let PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+// const server = http.createServer(app);
+// server.listen(app.get("port"), (req, res) => {
+//   console.log("App listening to port" + app.get("port"));
+// });
