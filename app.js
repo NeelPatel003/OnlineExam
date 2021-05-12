@@ -35,7 +35,9 @@ app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 mongoose.connect(config.db);
 const db = mongoose.connection;
 db.on("connected", () => {
-  console.log("Conneted to db..");
+  console.log(
+    "Conneted to db..----------------------------------------------------------------------------------------------------"
+  );
 });
 //Passport
 app.use(passport.initialize());
