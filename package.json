@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "postinstall": "ng build --aot -prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Online Exam System",
