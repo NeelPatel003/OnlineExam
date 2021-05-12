@@ -114,7 +114,7 @@ app.use(function (err, req, res, next) {
   });
 });
 
-let PORT = process.env.PORT || 5000;
+let PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 // const server = http.createServer(app);
