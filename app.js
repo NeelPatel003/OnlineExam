@@ -32,28 +32,26 @@ app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 // initialization of session middleware
 //app.options('*', cors());
 //enables cors
-// mongoose.connect(config.db);
-// const db = mongoose.connection;
-// db.on("connected", () => {
-//   console.log(
-//     "Conneted to db..----------------------------------------------------------------------------------------------------"
-//   );
+mongoose.connect(config.db);
+const db = mongoose.connection;
+db.on("connected", () => {
+  console.log("Conneted to db..----------------------------");
+});
+// mongoose.Promise = global.Promise;
+// mongoose.connect(
+//   "mongodb+srv://dbUser:dbUser@cluster0.grzp1.mongodb.net/examGround?retryWrites=true&w=majorit",
+//   {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useMongoClient: true,
+//   }
+// );
+// mongoose.connection.on("connected", () => {
+//   console.log("Mongoose Connected Succsessfuly");
 // });
-mongoose.Promise = global.Promise;
-mongoose.connect(
-  "mongodb+srv://dbUser:dbUser@cluster0.grzp1.mongodb.net/examGround?retryWrites=true&w=majorit",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useMongoClient: true,
-  }
-);
-mongoose.connection.on("connected", () => {
-  console.log("Mongoose Connected Succsessfuly");
-});
-mongoose.connection.on("error", () => {
-  console.log("Mongoose NOt Connected Succsessfuly");
-});
+// mongoose.connection.on("error", () => {
+//   console.log("Mongoose NOt Connected Succsessfuly");
+// });
 //Passport
 app.use(passport.initialize());
 app.use(passport.session());
