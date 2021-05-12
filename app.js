@@ -115,7 +115,7 @@ app.use(function (err, req, res, next) {
 });
 
 //express().listen(PORT, () => console.log(`Listening on ${PORT}`));
-const server = http.createServer(PORT);
+const server = http.createServer(app);
 server.listen(app.get("port"), (req, res) => {
   console.log("App listening to port" + app.get("port"));
 });
