@@ -6,7 +6,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
-
 // fs module, by default module for file management in nodejs
 const fs = require("fs");
 const config = require("./config/config.js");
@@ -27,16 +26,12 @@ app.use(express.static(path.join(__dirname, "/public")));
 //body-parser middleware
 app.use(bodyParser.json({ limit: "10mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
-
 //session middleware
 // initialization of session middleware
-
 //app.options('*', cors());
 //enables cors
-
 mongoose.connect(config.db);
 const db = mongoose.connection;
-
 db.on("connected", () => {
   console.log("Conneted to db..");
 });
@@ -53,7 +48,6 @@ app.use(
     cookie: { secure: false },
   })
 );
-
 require("./config/google-auth")(passport);
 require("./config/facebook-auth")(passport);
 // include all our model files
@@ -63,7 +57,6 @@ fs.readdirSync("./app/models").forEach(function (file) {
     // if it is js then include the file from that folder into our express app using require
     require("./app/models/" + file);
 }); // end for each
-
 // include controllers
 fs.readdirSync("./app/controllers").forEach(function (file) {
   if (file.indexOf(".js")) {
@@ -76,31 +69,25 @@ fs.readdirSync("./app/controllers").forEach(function (file) {
 app.use(function (req, res) {
   res.sendFile("index.html", { root: __dirname + "/public" });
 });
-
 //router to handle any other page request
 app
   .route("*")
-
   .get((req, res, next) => {
     res.statusCode = 404;
     next("Path not found");
   })
-
   .post((req, res, next) => {
     res.statusCode = 404;
     next("Path not found");
   });
-
 //end for each
 //using the setLoggedInuser middleware as an application level middleware
 //so that it processes every request before responding
 //  middleware to set request user(set new values to the session variable if any changes are made) and check which user is logged in
 //check if the user is a legitimate user
-
 //application level middleware for error handling of other page request
 app.use((err, req, res, next) => {
   console.log("this is error handling middleware");
-
   if (res.statusCode == 404) {
     const myResponse = responseGenerator.generate(
       true,
@@ -117,7 +104,6 @@ app.use((err, req, res, next) => {
     res.send(err);
   }
 });
-
 app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error", {
@@ -125,7 +111,6 @@ app.use(function (err, req, res, next) {
     error: err,
   });
 });
-
 const server = http.createServer(app);
 server.listen(app.get("port"), (req, res) => {
   console.log("App listening to port" + app.get("port"));
