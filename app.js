@@ -9,6 +9,22 @@ const passport = require("passport");
 // fs module, by default module for file management in nodejs
 const fs = require("fs");
 const config = require("./config/config.js");
+
+const MongoClient = require("mongodb").MongoClient;
+// replace the uri string with your connection string.
+const uri =
+  "mongodb+srv://dbUser:dbUser@cluster0.grzp1.mongodb.net/examGround?retryWrites=true&w=majority";
+MongoClient.connect(uri, function (err, client) {
+  if (err) {
+    console.log("Error occurred while connecting to MongoDB Atlas...\n", err);
+  }
+  console.log("Connected...yeh");
+
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
 //const PORT = process.env.PORT || 5000;
 
 //app.set("port", process.env.PORT || 3000);
@@ -32,26 +48,13 @@ app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 // initialization of session middleware
 //app.options('*', cors());
 //enables cors
-mongoose.connect(config.db);
-const db = mongoose.connection;
-db.on("connected", () => {
-  console.log("Conneted to db..----------------------------");
-});
-// mongoose.Promise = global.Promise;
-// mongoose.connect(
-//   "mongodb+srv://dbUser:dbUser@cluster0.grzp1.mongodb.net/examGround?retryWrites=true&w=majorit",
-//   {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useMongoClient: true,
-//   }
-// );
-// mongoose.connection.on("connected", () => {
-//   console.log("Mongoose Connected Succsessfuly");
+// mongoose.connect(config.db);
+// const db = mongoose.connection;
+// console.log("DBBB", db.on);
+// db.on("connected", () => {
+//   console.log("Conneted to db..--------------------");
 // });
-// mongoose.connection.on("error", () => {
-//   console.log("Mongoose NOt Connected Succsessfuly");
-// });
+
 //Passport
 app.use(passport.initialize());
 app.use(passport.session());
