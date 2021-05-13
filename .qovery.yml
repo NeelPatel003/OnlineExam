@@ -1,0 +1,15 @@
+---
+application:
+  name: "onlineexam"
+  project: "OES"
+  organization: "QoveryCommunity"
+databases:
+- type: "MONGODB"
+  name: "examGround"
+  version: "4.4"
+routers:
+- name: "main-onlineexam"
+  routes:
+  - application_name: "onlineexam"
+    paths:
+    - "/*"
